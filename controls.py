@@ -2,13 +2,14 @@ import difflib
 import os
 import sys
 from datetime import datetime
+from typing import Generator, List, Tuple, Optional
 
 
-def find_file_in_root_then_dirs(filename:str):
+def find_file_in_root_then_dirs(filename:str)->Optional[str]:
     """
     Search for a file in the root directory first, then in its subdirectories.
-    :param filename: The name of the file to search for.
 
+    :param filename: The name of the file to search for.
     :return: The path of the file if found, otherwise None.
     """
     try:
@@ -28,7 +29,14 @@ def find_file_in_root_then_dirs(filename:str):
     return None
 
 class Backporter:
-    def __init__(self, before_file:str, after_file:str, target_file:str):
+    def __init__(self, before_file:str, after_file:str, target_file:str)->None:
+        """
+        Initialize the Backporter object.
+
+        :param before_file: The file path before changes.
+        :param after_file: The file path after changes.
+        :param target_file: The file path where changes need to be applied.
+        """
         self._logs = []
         self.event('INFO started successfully.')
         try:
@@ -41,7 +49,8 @@ class Backporter:
             sys.exit(1)
 
 
-    def _read_file(self,filename:str):
+    def _read_file(self,filename:str)-> Generator[str]:
+        """Read a file and yield its lines one by one."""
         file_path = find_file_in_root_then_dirs(filename)
         if file_path is None:
             text = f"ERROR File'{filename}' not found in project directory or subdirectories."
@@ -49,25 +58,45 @@ class Backporter:
             raise FileNotFoundError(text)
 
         with open(file_path, 'r') as file:
-            return file.readlines()
+            for line in file:
+                yield line
 
 
-    def write_file(self,filename:str, data):
+    def write_file(self,filename:str, data: List[str])->None:
+        """
+        Write data to a file.
 
+        :param filename: The name of the file to write to.
+        :param data: The data to write to the file.
+        """
         with open(filename, 'w') as file:
             file.writelines(data)
 
-    def event(self, event:str):
-
+    def event(self, event:str)->None:
         timestamp = datetime.now()
         event_string =f'{timestamp} {event} \n'
         self._logs.append(event_string)
 
 
     def create_patch(self):
-        return difflib.unified_diff(self.before, self.after, lineterm='')
+        before_lines = []
+        after_lines = []
 
-    def apply_patch(self):
+        try:
+            while True:
+                before_lines.append(next(self.before))
+        except StopIteration:
+            pass  # Exhausted all lines in self.before
+
+        try:
+            while True:
+                after_lines.append(next(self.after))
+        except StopIteration:
+            pass  # Exhausted all lines in self.after
+
+        return difflib.unified_diff(before_lines, after_lines, lineterm='')
+
+    def apply_patch(self)->Tuple[List[str], List[str]]:
         patch_lines = self.create_patch()
         result = list(self.target)
 
