@@ -3,14 +3,14 @@ import difflib
 
 class Backporter:
 
-    def __init__(self, before_file, after_file, target_file):
-
-        self.before = self.read_file(before_file)
-        self.after = self.read_file(after_file)
-        self.target = self.read_file(target_file)
+    def __init__(self, before_file:str, after_file:str, target_file:str):
+        self.before = self._read_file(before_file)
+        self.after = self._read_file(after_file)
+        self.target = self._read_file(target_file)
 
     @staticmethod
-    def read_file(filename):
+    def _read_file(filename):
+
         with open(filename, 'r') as file:
             return file.readlines()
 
