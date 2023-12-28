@@ -9,8 +9,8 @@ LOG_FILE_NAME = 'log.txt'
 def main(before_file, after_file, target_file):
     backporter = Backporter(before_file, after_file, target_file)
     result, log = backporter.apply_patch()
-    Backporter.write_file(RESULT_FILE_NAME, result)
-    Backporter.write_file(LOG_FILE_NAME, log)
+    backporter.write_file(RESULT_FILE_NAME, result)
+    backporter.write_file(LOG_FILE_NAME, log)
     print("Backporting completed. Check 'result.c' and 'log.txt' for details.")
 
 
