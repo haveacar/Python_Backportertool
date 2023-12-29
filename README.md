@@ -15,7 +15,7 @@ Backporter is a Python-based tool that streamlines the process of applying patch
 To install Backporter, clone the repository or download the source code:
 
 ```bash
-git clone https://github.com/haveacar/Backporter.git
+git clone git@github.com:haveacar/Python_Backportertool.git
 cd Backporter
 ```
 
