@@ -121,4 +121,3 @@ class Backporter:
 
         return result, self._logs
 
-

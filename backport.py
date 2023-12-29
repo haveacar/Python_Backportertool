@@ -17,7 +17,6 @@ def main(before_file: str, after_file: str, target_file: str):
 
 
 if __name__ == "__main__":
-
     if len(sys.argv) != 4:
         print("Usage: python backporter.py <before_file> <after_file> <target_file>")
         sys.exit(1)
