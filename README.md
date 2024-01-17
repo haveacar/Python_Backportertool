@@ -24,7 +24,7 @@ cd Backporter
 Run Backporter by executing the main function with three arguments: the original file, the modified file, and the target file for the patch:
 
 ```bash
-python backport.py <original_file> <modified_file> <target_file>
+python backporter.py <original_file> <modified_file> <target_file>
 ```
 
 After running the command, Backporter will generate two files:
