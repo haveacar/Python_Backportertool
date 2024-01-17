@@ -1,7 +1,7 @@
 
 # Backporter
 
-Backporter is a Python-based tool that streamlines the process of applying patches to files. It efficiently reads files, detects differences between two file versions, and applies these differences as a patch to a target file. This tool is especially useful for managing file version control and updating processes.
+Backporter is a Python-based tool designed for Linux systems that streamlines the process of applying patches to files. It efficiently reads files, detects differences between two file versions, and applies these differences as a patch to a target file. Optimized for Linux file systems and commands, this tool is particularly useful for managing file version control and updating processes in Linux environments.
 
 ## Features
 
@@ -26,6 +26,10 @@ Run Backporter by executing the main function with three arguments: the original
 ```bash
 python backporter.py <original_file> <modified_file> <target_file>
 ```
+Example:
+```bash
+python backporter.py kernel-4.18.0-477.27.1.el8_856gbnlwn kernel-4.18.0-513.5.1.el8_92fqrcwu_ l2cap_core.cf7zq5cwb
+```
 
 After running the command, Backporter will generate two files:
 
@@ -33,6 +37,7 @@ After running the command, Backporter will generate two files:
 - `log.txt`: A log file detailing the changes made.
 
 ## Contact
+
 
 - **Developer**: Daniel Govnir
 - **Email**: haveacar.zhovnirl@gmail.com
