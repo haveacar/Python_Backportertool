@@ -35,6 +35,21 @@ After running the command, Backporter will generate two files:
 - `result.c`: The target file with the patch applied.
 - `log.txt`: A log file detailing the changes made.
 
+## Testing
+
+To ensure the reliability of the Backporter tool, a suite of unit tests is included. These tests cover all major functionalities, including file handling, patch generation, and application.
+
+To run the tests, navigate to the project directory and execute:
+```bash
+python -m unittest
+```
+This command will automatically discover and run all tests in the tests folder. Ensure all tests pass to verify the tool is functioning correctly, especially after making any changes to the code.
+
+## Continuous Integration
+
+This project uses GitHub Actions for continuous integration. Every push to the `main` branch and every pull request to `main` triggers automated linting with flake8 and unit testing using Python's built-in unittest framework. This ensures code quality and functional integrity throughout the development process.
+
+
 ## Contact
 
 
