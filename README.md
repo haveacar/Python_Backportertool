@@ -34,6 +34,6 @@ After running the command, Backporter will generate two files:
 
 ## Contact
 
-- **Developer**: Your Name
+- **Developer**: Daniel Govnir
 - **Email**: haveacar.zhovnirl@gmail.com
 - **Project Link**: [https://github.com/haveacar/Backporter](https://github.com/haveacar/Backporter)
