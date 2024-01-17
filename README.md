@@ -16,7 +16,6 @@ To install Backporter, clone the repository or download the source code:
 
 ```bash
 git clone git@github.com:haveacar/Python_Backportertool.git
-cd Backporter
 ```
 
 ## Usage
